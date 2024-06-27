@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "imgaes"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "quote_project"
+	}
+}

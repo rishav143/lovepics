@@ -1,0 +1,148 @@
+body {
+    margin: 0px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* header section */
+.header {
+    width: 100%;
+    position: absolute;
+    display: grid;
+    grid-template-areas: "... logo .... .... navbar"
+    ".... search search search search";
+    color: #eee;
+    gap: 10px;
+}
+.header .logo {
+    grid-area: logo;
+    font-family: "Playwrite US Trad", cursive;
+    font-size: 20px;
+    padding-top: 5%;
+}
+.header .nav-bar {
+    grid-area: navbar;
+}
+.header .nav-bar .items{
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    font-family: "poppins", cursive;
+    font-size: 14px;
+    font-weight: 400;
+}
+.header .nav-bar .items a {
+    text-decoration: none;
+    color: #eee;
+}
+.header .search {
+    grid-area: search;
+    padding-top: 20px;
+}
+.header .search input {
+    width: 30vw;
+    height: 30px;
+    border-radius: 5px;
+    position: relative;
+}
+.header .search button {
+    height: 35px;
+    width: 35px;
+    border-radius: 5px;
+}
+.result {
+    position: absolute;
+    padding: 1px 2px;
+    border: 2px solid white;
+    width: 30vw;
+    z-index: 1000;
+    background-color: #ffe4ea;
+    color: #000;
+    font-family: poppins;
+    font-size: small;
+}
+.result ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.result ul li {
+    padding: 5px 0;
+}
+.result ul li:hover {
+    background-color: rgb(129, 214, 140);
+}
+img {
+    height: 13em;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* main section  */
+.main {
+    background-color: #ffe4ea;
+
+}
+#content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    font-family: poppins;
+    font-weight: 400;
+    font-style: italic;
+}
+.main-item {
+    border: 3px solid white;
+    padding: 15px;
+    border-radius: 20px;
+    margin: 10px;
+    position: relative;
+    animation-duration: 1s;
+}
+.main-item:hover {
+    animation-name: moveItem;
+    background-color: rgba(255, 179, 203, 0.716);
+    animation-timing-function: ease;
+}
+
+@keyframes moveItem {
+    0% { transform: translateY(0);}
+    50% { transform: translateY(-10px);}
+    100% { transform: translateY(0);}
+}
+.img-item {
+    height: 400px;
+    width: 300px;
+    border-radius: 20px;
+    
+}
+.img-item img {
+    object-fit: cover;
+}
+#pagination {
+    padding: 40px;
+    text-align: center;
+}
+#pagination > button {
+    padding: 15px;
+    font-family: poppins;
+    background-color:rgb(129, 214, 140);
+    border-radius: 10px;
+    border: 2px white solid;
+}
+
+/* footer */
+.footer {
+    height: 400px;
+    background-color: rgba(255, 179, 203, 0.716);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer p {
+    font-family: poppins;
+    font-weight: 500;
+    font-size: 30px;
+}
