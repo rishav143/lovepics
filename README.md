@@ -48,3 +48,39 @@ In Footer section, text content is align in the centre using flex.
     justify-content: center;
 }
 ```
+## 2. Pixway API
+Pixway API is a RESTful interface for searching and retrieving royalty-free images and videos released by Pixabay under the Content License.
+### Parameter used
+
+| Parameter  | Data type |     Description |
+| ------------- | ------ | ------------- |
+| q | str |A URL encoded search term. If omitted, all images are returned. This value may not exceed 100 characters.Example: "yellow+flower"  |
+| image_type  | str |	Filter results by image type. Accepted values: "all", "photo", "illustration", "vector" Default: "all" |
+| pretty  | bool |	Indent JSON output. This option should not be used in production. Accepted values: "true", "false" Default: "false" |
+| page | int |	Returned search results are paginated. Use this parameter to select the page number. Default: 1  |
+
+Here, Page parameter used in code is dynamic in nature with respect to Set Pagination feature in the page. Below is the Pseudo code of fetchPictureByPage() function : 
+```
+fetch(`https://pixabay.com/api/?key=44596385-c611dbd77759f1fe4e426bdc7&q=yellow+flowers&image_type=photo&pretty=true&page=${page}`)
+    .then((result) => result.json())
+    .then((response) => {
+        
+        let content = document.getElementById("content");
+        let htmlString = ''
+        for (var i = 0; i < response.hits.length; i++) {
+            search_terms.push(response.hits[i].user)
+            htmlString += `
+            <div class="main-item">
+                <img class="img-item" src="${response.hits[i].largeImageURL}"></img>
+                <p> user : ${response.hits[i].user}</p>
+                <p> likes : ${response.hits[i].likes}</p>
+                <p> comments : ${response.hits[i].comments}</p>
+                <a href="${response.hits[i].largeImageURL}">View image</a>
+            </div>
+            `
+        }
+        content.innerHTML = htmlString;
+        let totalPages = response.totalHits / response.hits.length;
+        setPaginantion(page, totalPages);
+    })
+```
