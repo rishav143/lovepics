@@ -1,5 +1,9 @@
 # lovepics
 lovepics is web project for showing image content from pixway website. This project made completely using HTML, CSS and Javascript. 
+
+https://github.com/rishav143/lovepics/assets/93703303/35160eb8-d9ec-4d24-8220-3ba163a1d736
+
+
 # Main Features
 - Layout of Webpage
 - Pixway API
