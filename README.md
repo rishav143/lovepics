@@ -85,3 +85,73 @@ fetch(`https://pixabay.com/api/?key=44596385-c611dbd77759f1fe4e426bdc7&q=yellow+
         setPaginantion(page, totalPages);
     })
 ```
+## 3. Debouncing
+### What is Debouncing?
+Debouncing is a programming pattern or a technique to restrict the calling of a time-consuming function frequently, by delaying the execution of the function until a specified time to avoid unnecessary CPU cycles, and API calls and improve performance.
+### Implementation of debouncing
+```
+function debounce(func, delay) {
+    let timeout;
+    return function() {
+        clearTimeout(timeout);
+        timeout = setTimeout(func, delay);
+    }
+}
+```
+## 4. Search auto suggestion
+The browser will call the display function after every single keypress. Then it passes the current search to an autocompleteMatch function to get the list of matched terms. Finally, the results are added to the div as an unordered list.
+
+When you run this code, you’ll notice that matched terms appear as bullet points below the search box.
+```
+var search_terms = []
+function autocompleteMatch(input) {
+    if(input == '') return [];
+    var reg = new RegExp(input)
+    return search_terms.filter((term) => term.match(reg));
+}
+function display() {
+    val = document.getElementById("search-input").value;
+    result.setAttribute("class", "result")
+    result.innerHTML="";
+    let list = '';
+    terms = autocompleteMatch(val);
+    for(i=0; i<terms.length; i++) {
+        list += `<li onclick="handleListClick('${terms[i]}')">` + terms[i] + '</li>';
+    }
+    result.innerHTML = '<ul>' + list + '</ul>';
+}
+
+```
+## 5. Paginantion
+```
+function setPaginantion(currentPage, totalPages) {
+    let pagination = document.getElementById("pagination");
+    pagination.innerHTML = "";
+    const createButton = (text, page) => {
+        let button = document.createElement("button");
+        button.textContent = text;
+        if(page > 0) button.onclick = () => fetchPictureByPage(page);
+        return button;
+    }
+    
+    //previous page
+    const prev = createButton("prev", currentPage-1);
+    prev.disabled = currentPage === 1;
+    pagination.appendChild(prev)
+
+    //middle pages
+    const max = 6;
+    const start = Math.max(1, currentPage-Math.floor(max/2));
+    const end = Math.min(totalPages, start + max - 1);
+    for(var i = start; i <= end; i++) {
+        const middle = createButton(i, i);
+        pagination.appendChild(middle);
+    }
+
+    //next Page
+    const next = createButton("next", currentPage+1);
+    next.disabled = currentPage === totalPages;
+    pagination.appendChild(next);
+}
+```
+The setPaginantion function receives two arguments, currentPage and totalPages, from the fetchPictureByPage function. The currentPage helps to create new buttons, and totalPages determines the end of the pagination. When a user clicks on a page button, it calls the fetchPictureByPage function, which displays content on the page from the API and dynamically creates the next, middle, and previous buttons on the current page. The “prev” and “next” buttons will be disabled when the user reaches the boundary conditions.
