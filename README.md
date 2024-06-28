@@ -24,7 +24,8 @@ Header contains Logo title, Navigation items, and Search form. For header layout
     gap: 10px;
 }
 ```
-<img width="956" alt="Screenshot 2024-06-28 at 1 15 48 PM" src="https://github.com/rishav143/lovepics/assets/93703303/61a0c697-dae7-406a-b0e2-e4826e34e406">
+
+<img width="892" alt="Screenshot 2024-06-28 at 8 14 11 PM" src="https://github.com/rishav143/lovepics/assets/93703303/61134b11-5723-42ed-a916-f8d8cf8c1f78">
 
 Main section have content and paginantion. For items inside the content we have used flex for the layout.
 
