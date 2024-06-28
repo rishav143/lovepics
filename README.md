@@ -123,6 +123,7 @@ function display() {
 
 ```
 ## 5. Paginantion
+The setPaginantion function receives two arguments, currentPage and totalPages, from the fetchPictureByPage function. The currentPage helps to create new buttons, and totalPages determines the end of the pagination. When a user clicks on a page button, it calls the fetchPictureByPage function, which displays content on the page from the API and dynamically creates the next, middle, and previous buttons on the current page. The “prev” and “next” buttons will be disabled when the user reaches the boundary conditions.
 ```
 function setPaginantion(currentPage, totalPages) {
     let pagination = document.getElementById("pagination");
@@ -154,4 +155,3 @@ function setPaginantion(currentPage, totalPages) {
     pagination.appendChild(next);
 }
 ```
-The setPaginantion function receives two arguments, currentPage and totalPages, from the fetchPictureByPage function. The currentPage helps to create new buttons, and totalPages determines the end of the pagination. When a user clicks on a page button, it calls the fetchPictureByPage function, which displays content on the page from the API and dynamically creates the next, middle, and previous buttons on the current page. The “prev” and “next” buttons will be disabled when the user reaches the boundary conditions.
