@@ -99,7 +99,7 @@ function debounce(func, delay) {
 }
 ```
 ## 4. Search auto suggestion
-The browser will call the display function after every single keypress. Then it passes the current search to an autocompleteMatch function to get the list of matched terms. Finally, the results are added to the div as an unordered list.
+The search_term variable contains all the user name collected during API fetching. The browser will call the display function after every single keypress. Then it passes the current search to an autocompleteMatch function to get the list of matched terms. Finally, the results are added to the div as an unordered list.
 
 When you run this code, you’ll notice that matched terms appear as bullet points below the search box.
 ```
